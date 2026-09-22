@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #161827;
+    --bg-surface: #1B1F38;
+    --bg-surface-light: #24294C;
+    --color-gold: #F59E0B;
+    --color-blue: #3B82F6;
+    --color-purple: #8B5CF6;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #161827;
+    color: #E2E8F0;
+    overflow-x: hidden;
+  }
+
+  /* Tabular figures for all numeric badges and countdowns */
+  .font-mono-numbers {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+}
+
+/* Glassmorphism & Surface Language */
+.glass-panel {
+  background: linear-gradient(135deg, rgba(27, 31, 56, 0.82) 0%, rgba(15, 17, 30, 0.90) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.glass-panel-gold {
+  border-color: rgba(245, 158, 11, 0.22);
+}
+
+.glass-panel-blue {
+  border-color: rgba(59, 130, 246, 0.22);
+}
+
+.glass-panel-cyan {
+  border-color: rgba(34, 211, 238, 0.18);
+}
+
+.glass-panel-purple {
+  border-color: rgba(139, 92, 246, 0.22);
+}
+
+/* Text Shimmers */
+.shimmer-text-gold {
+  background: linear-gradient(90deg, #FDE68A 0%, #F59E0B 25%, #FBBF24 50%, #F59E0B 75%, #FDE68A 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 4s linear infinite;
+}
+
+.shimmer-text-blue {
+  background: linear-gradient(90deg, #93C5FD 0%, #38BDF8 25%, #60A5FA 50%, #818CF8 75%, #93C5FD 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 4s linear infinite;
+}
+
+.shimmer-text-cyan {
+  background: linear-gradient(90deg, #F8FAFC 0%, #E2E8F0 25%, #67E8F9 50%, #A5F3FC 75%, #F8FAFC 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 4.5s linear infinite;
+}
+
+.shimmer-text-purple {
+  background: linear-gradient(90deg, #E9D5FF 0%, #C084FC 25%, #E879F9 50%, #818CF8 75%, #E9D5FF 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 4s linear infinite;
+}
+
+@keyframes textShimmer {
+  to { background-position: 200% center; }
+}
+
+/* Button Sheen Sweep */
+.btn-sheen {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-sheen::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  animation: sheenSweep 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes sheenSweep {
+  0%, 40% { transform: translateX(-160%) rotate(25deg); }
+  70%, 100% { transform: translateX(450%) rotate(25deg); }
+}
+
+/* Floating Animations */
+.float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.float-reverse {
+  animation: floatReverse 6.5s ease-in-out infinite;
+}
+
+.float-subtle {
+  animation: floatSubtle 5s ease-in-out infinite;
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(0.8deg); }
+}
+
+@keyframes floatReverse {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(7px) rotate(-0.8deg); }
+}
+
+@keyframes floatSubtle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Sparkles Drift */
+.sparkle-dot {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: sparkleFloat 4s ease-in-out infinite;
+}
+
+@keyframes sparkleFloat {
+  0%, 100% { transform: translateY(0px) scale(0.8); opacity: 0.2; }
+  50% { transform: translateY(-16px) scale(1.4); opacity: 0.9; }
+}
+
+/* Milestone Pulse */
+.pulse-milestone {
+  animation: milestonePulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes milestonePulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.5); }
+  50% { transform: scale(1.04); box-shadow: 0 0 12px 3px rgba(245, 158, 11, 0.3); }
+}
+
+/* Pulse Dot */
+.live-dot-ping {
+  animation: dotPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+/* 3D Perspective Card */
+.banner-3d-box {
+  transform-style: preserve-3d;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+.banner-3d-img {
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.4s ease;
+  will-change: transform;
+}
+
+/* Chest Shake Animation for Claiming */
+@keyframes chestRumble {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  10%, 30%, 50%, 70%, 90% { transform: scale(1.03) rotate(-1.5deg); }
+  20%, 40%, 60%, 80% { transform: scale(1.03) rotate(1.5deg); }
+}
+
+.chest-shake {
+  animation: chestRumble 0.8s ease-in-out;
+}
+
+/* No scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .float-slow,
+  .float-reverse,
+  .float-subtle,
+  .shimmer-text-gold,
+  .shimmer-text-blue,
+  .shimmer-text-cyan,
+  .shimmer-text-purple,
+  .btn-sheen::after,
+  .sparkle-dot,
+  .pulse-milestone,
+  .live-dot-ping,
+  .chest-shake {
+    animation: none !important;
+    transition: none !important;
+  }
+}
